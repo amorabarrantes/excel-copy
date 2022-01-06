@@ -49,9 +49,6 @@ class hojaDeCalculo {
                 const target = tabla.rows[i].cells[j].querySelector('div');
                 const funcion = tabla.rows[i].cells[j].querySelector('div').dataset?.funcion;
                 if (funcion !== undefined) {
-                    //console.log("cambiar");
-                    //console.log(JSON.parse(celda1Num));
-                    console.log(funcion);
                     this._ejecutarFuncion(target, funcion);
                 }
             }
@@ -73,8 +70,7 @@ class hojaDeCalculo {
         try {
             parseado = JSON.parse(funcion);
         } catch (err) {
-            //alert("solo numeros o funciones");
-            console.log("error");
+            alert("solo numeros o funciones");
             return;
         }
 
@@ -108,7 +104,6 @@ class hojaDeCalculo {
     }
 
     mostrarFuncion(e) {
-        console.log(e);
         const funcion = e.target.dataset?.funcion;
         if (funcion === undefined) {
             return;
@@ -125,4 +120,4 @@ document.addEventListener("paste", function (e) {
 });
 
 const divGeneral = document.querySelector(".hojaDeCalculo");
-const hoja1 = new hojaDeCalculo(4, 4, divGeneral);
+const hoja1 = new hojaDeCalculo(10, 10, divGeneral);
